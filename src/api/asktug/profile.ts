@@ -413,10 +413,10 @@ export async function getSummaryByUsername(
   const { username } = input;
   const url = `${askTugApiDomain}/u/${encodeURIComponent(username)}/summary.json`;
   try {
-    const result: IProfileSummary = await asktugClient.get(
-      url,
-      withAccountsCookies({ isReturnErrorResponse: true }, ssrCtx)
-    );
+    const result: IProfileSummary = await asktugClient.get(url, {
+      isReturnErrorResponse: true,
+      ssrCtx,
+    });
     return result ?? null;
   } catch (response) {
     if (response?.status && response.status === 404) {

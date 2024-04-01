@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getI18nProps(['common'])(ctx),
     getBadgesByUsername({ username }),
     getUserProfileByUsername({ username }),
-    getSummaryByUsername({ username }),
+    getSummaryByUsername({ username }, ctx),
     getAnswersByUsername({ pageNumber: pageNumber + 1, pageSize, username, markedSolution }),
     getPostsNumberByUsername({ username }),
     getPostFavoritesNumberByUsername({ username }),

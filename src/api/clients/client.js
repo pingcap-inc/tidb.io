@@ -4,6 +4,8 @@ import { createCaptchaInterceptor } from '@tidb-community/common/utils/axios';
 import { getCaptchaToken } from '@tidb-community/common/utils/form';
 
 import { dispatchApiError } from './events';
+import { applyDebugInterceptor } from './interceptors/debug';
+import { passThroughCookies } from '~/api/clients/interceptors/ssr';
 
 const CSRF_MSG = 'CSRF Failed: CSRF token missing or incorrect.';
 
@@ -14,8 +16,10 @@ const isDispatchGlobalApiError = (status) => {
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? '',
   withCredentials: true,
+  passThroughCookies: 'accounts',
 });
 
+axios.interceptors.request.use(passThroughCookies);
 client.interceptors.request.use((config) => {
   const csrftoken = Cookie.get('csrftoken');
 
@@ -32,6 +36,8 @@ client.interceptors.request.use((config) => {
 
   return config;
 });
+
+applyDebugInterceptor(client);
 
 client.interceptors.response.use(
   ({ data }) => data,
