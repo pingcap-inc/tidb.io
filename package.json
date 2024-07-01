@@ -11,7 +11,7 @@
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
     "deploy:production": "shipit production deploy",
     "deploy:preview": "shipit preview deploy",
-    "dev": "npm run start:i18n && npm run next:dev",
+    "dev": "npm run start:i18n & npm run next:dev",
     "lint": "next lint && eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "lerna bootstrap --ignore=@tidb-community/ui",
     "prepare": "husky install",

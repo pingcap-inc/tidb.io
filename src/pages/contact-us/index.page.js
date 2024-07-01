@@ -43,9 +43,7 @@ const Page = () => {
               <Styled.CardParagraph>想要获得商业专家产品最高响应级别 7*24 支持服务</Styled.CardParagraph>
               <Styled.CardComment>规划/实施/主动式巡检/故障协查/知识转移/重要时期保障</Styled.CardComment>
               <Styled.CardParagraph>
-                <Anchor href={'https://cn.pingcap.com/contact/?utm_source=tidb-community&utm_medium=referral'}>
-                  &gt; 联系 PingCAP
-                </Anchor>
+                <Anchor href="/support">&gt; 商业支持咨询</Anchor>
               </Styled.CardParagraph>
             </Styled.Card>
             <Styled.Card $color={'#E30C34'}>
